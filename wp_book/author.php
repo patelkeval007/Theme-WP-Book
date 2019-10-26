@@ -9,7 +9,11 @@
 
 <main>
     <?php
-    $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+    if (isset($_GET['author_name']) == true) {
+        $curauth = get_user_by('slug', $author_name);
+    } else {
+        $curauth = get_userdata(intval($author));
+    }
     ?>
     <div class="page-banner-area mt-60">
         <div class="cat-heading text-center grey-bg">
@@ -31,7 +35,7 @@
                         </ul>
                         <?php
                         $post_idx = 0;
-                        if (have_posts()) {
+                        if (have_posts() == true) {
                             ?>
                             <table class="table">
                                 <thead>
@@ -44,10 +48,10 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        while (have_posts()) {
-                                            the_post();
-                                            $post_idx++;
-                                            ?>
+                                    while (have_posts() == true) {
+                                        the_post();
+                                        $post_idx++;
+                                        ?>
                                         <tr>
                                             <th scope="row"><?php echo $post_idx ?></th>
                                             <td><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link: <?php the_title(); ?>"><?php the_title(); ?></a></td>
@@ -59,8 +63,9 @@
                             </table>
                         <?php } else { ?>
                             <center><label type="text" readonly class="form-control-plaintext">No Posts Available.</label></center>
-                        <?php } ?>
+                        <?php }//end if
+                        ?>
                     </div>
                 </div>
 </main>
-<?php get_footer(); ?>
+<?php get_footer();

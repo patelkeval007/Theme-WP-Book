@@ -12,13 +12,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="page-title-bar text-center pt-60 pb-60" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/bg/page-itle.jpg' ?>)">
-                        <h1><?php if (is_tag()) {
-                                the_tags();
-                            }
-                            if (is_category()) {
-                                the_category();
-                            } ?></h1>
+                    <div class="page-title-bar text-center pt-60 pb-60" style="background-image: url(<?php echo get_template_directory_uri().'/assets/img/bg/page-itle.jpg' ?>)">
+                        <h1><?php
+                        if (is_tag() == true) {
+                            the_tags();
+                        }
+
+                        if (is_category() == true) {
+                            the_category();
+                        }
+                        ?></h1>
                     </div>
                 </div>
             </div>
@@ -31,18 +34,18 @@
                 <div class="col-xl-8 col-lg-8 col-md-12">
 
                     <?php
-                    if (have_posts()) {
-                        while (have_posts()) {
+                    if (have_posts() == true) {
+                        while (have_posts() == true) {
                             the_post();
                             ?>
                             <div class="postbox mb-40">
                                 <div class="postbox__thumb mb-25">
                                     <a href=<?php the_permalink(); ?>>
                                         <?php
-                                                if (has_post_thumbnail()) {
-                                                    the_post_thumbnail();
-                                                }
-                                                ?>
+                                        if (has_post_thumbnail() == true) {
+                                            the_post_thumbnail();
+                                        }
+                                        ?>
                                     </a>
                                 </div>
                                 <div class="postbox__text">
@@ -60,7 +63,7 @@
                                                             $archive_year  = get_the_time('Y');
                                                             $archive_month = get_the_time('m');
                                                             $archive_day   = get_the_time('d');
-                                                            ?>
+                                                    ?>
                                                     <a href="<?php echo get_day_link($archive_year, $archive_month, $archive_day); ?>"> <?php echo get_the_date(); ?></a>
                                                 </span>
                                             </li>
@@ -75,12 +78,13 @@
                                     <a href=<?php the_permalink(); ?> class="read-more">read more</a>
                                 </div>
                             </div>
-                    <?php
-                        }
+                            <?php
+                        }//end while
+
                         wp_reset_postdata();
                     } else {
                         get_template_part('template-parts/content', 'none');
-                    }
+                    }//end if
                     ?>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12">
@@ -92,4 +96,4 @@
 
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer();

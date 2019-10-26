@@ -13,8 +13,8 @@
     <title><?php echo get_bloginfo('title'); ?></title>
     <meta name="<?php echo get_bloginfo('description'); ?>" content="">
 
-    <link rel="manifest" href=<?php echo get_template_directory_uri() . "site.html" ?>>
-    <link rel="shortcut icon" type="image/x-icon" href=<?php echo get_template_directory_uri() . '/assets/img/alter/favicon.ico' ?>>
+    <link rel="manifest" href=<?php echo get_template_directory_uri()."site.html" ?>>
+    <link rel="shortcut icon" type="image/x-icon" href=<?php echo get_template_directory_uri().'/assets/img/alter/favicon.ico' ?>>
 
     <?php wp_head(); ?>
 </head>
@@ -45,7 +45,7 @@
                         <div class="header__menu f-left">
                             <nav id="mobile-menu">
                                 <?php
-                                $args = array('theme_location'    => 'book_menu');
+                                $args = ['theme_location' => 'book_menu'];
                                 wp_nav_menu($args);
                                 ?>
                             </nav>

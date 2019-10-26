@@ -24,7 +24,7 @@
                                         $archive_year  = get_the_time('Y');
                                         $archive_month = get_the_time('m');
                                         $archive_day   = get_the_time('d');
-                                        ?>
+                                ?>
                                     <a href="<?php echo get_day_link($archive_year, $archive_month, $archive_day); ?>"> <?php echo get_the_date(); ?></a>
                                 </span>
                             </li>
@@ -38,11 +38,13 @@
 
                     <!-- post-thumb -->
                     <div class="post-thumb mb-25">
-                        <img height="451px" width="803px" src=<?php if (has_post_thumbnail()) {
-                                                                    the_post_thumbnail_url();
-                                                                } else
-                                                                    echo get_template_directory_uri() . '/assets/img/alter/alter.jpg';
-                                                                ?> alt="">
+                        <img height="451px" width="803px" src=<?php
+                        if (has_post_thumbnail() == true) {
+                            the_post_thumbnail_url();
+                        } else {
+                            echo get_template_directory_uri().'/assets/img/alter/alter.jpg';
+                        }
+                        ?> alt="">
                     </div>
 
                     <!-- post-content -->
@@ -81,7 +83,7 @@
                     </div>
 
                     <?php
-                    if (comments_open() || get_comments_number()) {
+                    if (comments_open() == true || get_comments_number() == true) {
                         comments_template();
                     }
                     ?>

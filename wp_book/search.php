@@ -24,18 +24,20 @@
             <div class="row">
                 <div class="col-xl-8 col-lg-8 col-md-12">
                     <?php
-                    if (have_posts()) {
-                        while (have_posts()) {
+                    if (have_posts() == true) {
+                        while (have_posts() == true) {
                             the_post();
                             ?>
                             <div class="postbox mb-40">
                                 <div class="postbox__thumb mb-25">
                                     <a href=<?php the_permalink(); ?>>
-                                        <img height="451px" width="803px" src=<?php if (has_post_thumbnail()) {
-                                                                                            the_post_thumbnail_url();
-                                                                                        } else
-                                                                                            echo get_template_directory_uri() . '/assets/img/alter/alter.jpg';
-                                                                                        ?> alt="">
+                                        <img height="451px" width="803px" src=<?php
+                                        if (has_post_thumbnail() == true) {
+                                            the_post_thumbnail_url();
+                                        } else {
+                                            echo get_template_directory_uri().'/assets/img/alter/alter.jpg';
+                                        }
+                                        ?> alt="">
                                     </a>
                                 </div>
                                 <div class="postbox__text">
@@ -65,9 +67,9 @@
                                     <a href=<?php the_permalink(); ?> class="read-more">read more</a>
                                 </div>
                             </div>
-                    <?php
-                        }
-                    }
+                            <?php
+                        }//end while
+                    }//end if
                     ?>
 
                 </div>
@@ -81,4 +83,4 @@
 
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer();

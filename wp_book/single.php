@@ -12,13 +12,12 @@
 
         <?php
         // Start the loop.
-        while (have_posts()) {
+        while (have_posts() == true) {
             the_post();
-
             get_template_part('template-parts/content', 'single');
         }
         ?>
     </main>
 </div>
 
-<?php get_footer(); ?>
+<?php get_footer();
